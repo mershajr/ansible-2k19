@@ -1,0 +1,10 @@
+- name : Demo on variables from prompt
+  hosts: DEV
+  vars_prompt:
+      - name: "passwd"
+        prompt: Please enter your password
+        private: no
+  tasks:
+    - name: print the password from the prompt
+      debug:
+        msg: "password = {{passwd}}"

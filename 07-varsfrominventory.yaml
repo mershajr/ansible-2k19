@@ -1,0 +1,9 @@
+- name: printing tghe variable
+  hosts: DEV  
+  tasks:
+    - name: print the variable from play
+      debug:
+        msg: "hello {{NAME}}"
+    - name: print the variable from task
+      debug:
+        msg: "hello {{IPADDRESS}}"

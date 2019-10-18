@@ -1,0 +1,23 @@
+- name: create web layer
+  hosts: DEV
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: download and install httpd
+      yum: 
+        name: httpd
+        state: latest
+    - name: starting the web server
+      service: 
+        name: httpd
+        state: started
+
+    #- name: downloading the tomcat connector package
+     # get_url:
+     #    url: http://mirrors.estointernet.in/apache/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.46-src.tar.gz
+     #    dest: /opt
+    - name: extracting the tomcat package
+      unarchive:
+         src: http://mirrors.estointernet.in/apache/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.46-src.tar.gz
+         dest: /opt
+         remote_src: yes

@@ -1,0 +1,15 @@
+- name: printing tghe variable
+  hosts: DEV
+  vars:
+    NAME: ANIL
+  tasks:
+    - name: print the variable from play
+      vars:
+        NAME: RAHIM
+      debug:
+        msg: "hello {{NAME}}"
+    - name: print the variable from task
+      vars:
+        NAME: RAM
+      debug:
+        msg: "hello {{NAME}}"

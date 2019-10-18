@@ -1,0 +1,11 @@
+- name: printing the varialbele from files
+  hosts: DEV
+  vars_files:
+     - credentials.yaml
+  tasks:
+    - name: printing the variable
+      debug:
+        msg: "ipaddress = {{ip}}"
+    - name: printing the variable
+      debug:
+        msg: "USER = {{username}}"

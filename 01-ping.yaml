@@ -1,0 +1,5 @@
+- name: pining the server
+  hosts: DEV
+  tasks:
+    - name: ping the develepment server
+      ping:
