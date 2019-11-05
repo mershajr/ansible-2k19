@@ -1,0 +1,18 @@
+- name: Demo on finding the files
+  hosts: DEV
+  tasks:
+    - name: find the log files
+      find:
+        path: /tmp
+        #patterns: '*.text'
+        file_type: any
+        recurse: yes
+      register: out
+    - name: printing all the files
+      debug:
+        msg: "{{out}}"
+    - name: removing the log files
+      file:
+        path: "{{item.path}}"
+        state: absent
+      loop: "{{out.files}}"

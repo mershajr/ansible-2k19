@@ -1,0 +1,20 @@
+- name : Demo on registering the variables
+  hosts: DEV
+  #become: yes
+  tasks:
+    - name: register the variable
+      shell:  id -u
+      register: sample
+  #  - name: printing the output
+#debug:
+   #     msg: "{{sample}}"
+  #  - name: print the stdout
+  #    debug:
+  #      msg: "{{sample.stdout}}"
+    - name: setting the facts
+      set_fact:
+        UID: "{{sample.stdout}}"
+
+    - name: print the variable UID
+      debug:
+        msg: "{{UID}}"

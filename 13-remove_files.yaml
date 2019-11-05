@@ -1,0 +1,12 @@
+- name: removing the files
+  hosts: DEV
+  tasks:
+    - name: remove module
+      file: 
+        path: "{{item}}"
+        state: absent
+      loop:
+        - /tmp/abc
+        - /tmp/bed
+        - /tmp/test1
+        - /tmp/test2

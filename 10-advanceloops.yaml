@@ -1,0 +1,13 @@
+- name : Demo on advance loops
+  hosts: DEV
+  become: yes
+  tasks:
+    - name: advanced loop
+      yum:
+        name: "{{item.name}}"
+        state: "{{item.state}}"
+      loop:
+        - { name : 'httpd' , state : 'absent'}
+        - { name : 'gcc', state : 'latest'}
+      
+    

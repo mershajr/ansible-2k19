@@ -1,0 +1,23 @@
+- name: demo on file exit or not
+  hosts: DEV
+  tasks:
+    - name: get the statistics of the file
+      stat: 
+        path: /tmp/test
+      register: st
+    - name: printing the st
+      debug:
+        msg: "{{st}}"
+    - name: printing the actual statistics of file
+      debug:
+        msg: "{{st.stat.exists}}"
+
+    - name: run this task if file exists
+      debug:
+        msg: " FILE IS EXISTING"
+      when: st.stat.exists == true
+
+    - name: run this task if file does not exists
+      debug:
+        msg: "FILE DOESNOT EXISTS"
+      when: st.stat.exists == false

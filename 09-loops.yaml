@@ -1,0 +1,13 @@
+- name : Demo on loops
+  hosts: DEV
+  become: yes
+  tasks:
+    - name : Installing multiple packages
+      yum:
+        name: "{{item}}"
+        state: latest
+      loop:
+         - httpd
+         - gcc
+         - httpd-devel
+         - git
